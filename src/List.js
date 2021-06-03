@@ -4,14 +4,24 @@ import { NavLink } from 'react-router-dom';
 const Like = () => {
   const [count, setCount] = useState(0)
   const [liked, setLike] = useState(false)
+  const [display, setDisplay] = useState(true)
 
   useEffect(() => {
-    console.log('Number of like ' + count)
-  }, [count, liked]) 
+    if(count>0)console.log('Number of like ' + count)
+    if(count>= 5) {
+      alert('Arrêt 5 likes')
+      setDisplay(false)
+    }
+  }, [count]) 
+
+    useEffect(() => {
+      if(liked) console.log('You hit liked ' + liked)
+    }, [liked])
 
   return(
     <>
-      <button onClick={()=>setCount(count+1)}>{count} Like(s)</button><br/>
+    {(() => display ? <button onClick={() => setCount(count+1)}>
+       {count} Like(s)</button> : <span>{count} Likes</span> )() } <br />
       <button onClick={()=>setLike(!liked)}>{count} Liked {liked.toString()}</button>
     </>
   )
