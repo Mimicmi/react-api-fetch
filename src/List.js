@@ -1,5 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
+const Like = () => {
+  const [count, setCount] = useState(0)
+
+  return(
+    <button onClick={()=>setCount(count+1)}>{count} Like(s)</button>
+  )
+}
 
 class List extends React.Component {
 
@@ -46,6 +54,7 @@ class List extends React.Component {
       return (
         items.map(item => (
           <article key={item._id}>
+            <p><Like /></p>
             <NavLink to={"/details/" + item._id}>
             {
             (() => {
