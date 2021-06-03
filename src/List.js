@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Like = () => {
   const [count, setCount] = useState(0)
   const [liked, setLike] = useState(false)
+
+  useEffect(() => {
+    console.log('Number of like ' + count)
+  }, [count, liked]) 
 
   return(
     <>
