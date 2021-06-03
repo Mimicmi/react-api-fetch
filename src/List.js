@@ -3,9 +3,13 @@ import { NavLink } from 'react-router-dom';
 
 const Like = () => {
   const [count, setCount] = useState(0)
+  const [liked, setLike] = useState(false)
 
   return(
-    <button onClick={()=>setCount(count+1)}>{count} Like(s)</button>
+    <>
+      <button onClick={()=>setCount(count+1)}>{count} Like(s)</button><br/>
+      <button onClick={()=>setLike(!liked)}>{count} Liked {liked.toString()}</button>
+    </>
   )
 }
 
